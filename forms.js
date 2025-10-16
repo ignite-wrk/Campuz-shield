@@ -1,4 +1,4 @@
-// forms.js - Incident report form handling and validation
+// forms.js - Incident report form handling and validation (no auto-reply)
 
 function validateEmail(email) {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -8,33 +8,44 @@ function validateEmail(email) {
 function validateIncidentForm(form) {
   const type = form.querySelector('#incidentType').value.trim();
   const desc = form.querySelector('#description').value.trim();
+  const contact = form.querySelector('#contact').value.trim();
   let errors = [];
 
   if (!type) errors.push("Please select an incident type.");
   if (!desc) errors.push("Description is required.");
-
-  const contact = form.querySelector('#contact').value.trim();
   if (contact && !validateEmail(contact)) errors.push("Invalid email format.");
 
   return errors;
 }
 
-function submitIncidentReport(form) {
+async function submitIncidentReport(form) {
   const errors = validateIncidentForm(form);
   const feedback = form.querySelector('.form-feedback');
-  if (feedback) feedback.innerHTML = '';
+  feedback.innerHTML = '';
+
   if (errors.length > 0) {
-    if (feedback) feedback.innerHTML = errors.map(e => `<div class="error">${e}</div>`).join('');
-    form.querySelector('[type="submit"]').disabled = false;
+    feedback.innerHTML = errors.map(e => `<div class="error">${e}</div>`).join('');
     return false;
   }
 
-  // Placeholder for backend integration
-  // For now, just show a thank you message
-  if (feedback) feedback.innerHTML = `<div class="success">Thank you for reporting! Your information has been submitted anonymously. We will review this threat.</div>`;
+  const formData = new FormData(form);
 
-  form.reset();
-  return true;
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { Accept: 'application/json' },
+    });
+
+    if (response.ok) {
+      feedback.innerHTML = `<div class="success">✅ Thank you for reporting! Your information has been submitted anonymously. We'll review this threat shortly.</div>`;
+      form.reset();
+    } else {
+      feedback.innerHTML = `<div class="error">❌ There was a problem submitting your report. Please try again later.</div>`;
+    }
+  } catch (error) {
+    feedback.innerHTML = `<div class="error">⚠️ Network error. Please check your connection.</div>`;
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,10 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       this.querySelector('[type="submit"]').disabled = true;
-      submitIncidentReport(this);
-      setTimeout(() => {
-        this.querySelector('[type="submit"]').disabled = false;
-      }, 2000);
+      submitIncidentReport(this).finally(() => {
+        setTimeout(() => {
+          this.querySelector('[type="submit"]').disabled = false;
+        }, 2000);
+      });
     });
   }
 });
