@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Incident - Campus Cyber Shield</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <div class="nav-logo"><h2>🛡️ Campus Cyber Shield</h2></div>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="report-incident.html" class="nav-link">Report Incident</a>
+        <a href="blog.html" class="nav-link">Alerts</a>
+      </div>
+      <div class="hamburger" tabindex="0" aria-label="Open menu" role="button">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <main style="margin-top: 80px; padding: 2rem;">
+    <div class="container">
+      <h1>Report a Security Incident</h1>
+      <p>Help us protect the campus community by reporting suspicious activities</p>
+
+      <div class="report-form">
+        <form id="incidentForm" aria-label="Report a security incident">
+          <div class="form-feedback" aria-live="polite"></div>
+          <div class="form-group">
+            <label for="incidentType">Type of Incident *</label>
+            <select id="incidentType" required>
+              <option value="">Select an option</option>
+              <option value="phishing">Phishing Email/SMS</option>
+              <option value="scam">Online Scam</option>
+              <option value="social-media">Social Media Impersonation</option>
+              <option value="harassment">Cyberbullying/Harassment</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="incidentDate">When did this happen?</label>
+            <input type="date" id="incidentDate">
+          </div>
+          <div class="form-group">
+            <label for="description">What happened? *</label>
+            <textarea id="description" placeholder="Please describe the incident in detail..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="contact">Contact Information (Optional)</label>
+            <input type="email" id="contact" placeholder="email@example.com">
+            <small>We'll only contact you if we need more information</small>
+          </div>
+          <div class="privacy-note">
+            <strong>🔒 Privacy Note:</strong> Your report is anonymous. We will not share your personal information without your consent.
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Report</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Campus Cyber Shield. Protecting students in the digital space.</p>
+    </div>
+  </footer>
+
+  <script src="core.js"></script>
+  <script src="quiz.js"></script>
+  <script src="forms.js"></script>
+</body>
+</html>
