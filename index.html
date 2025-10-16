@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Cyber Shield - Digital Safety for Students</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <h2>🛡️ Campus Cyber Shield</h2>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="report-incident.html" class="nav-link">Report Incident</a>
+        <a href="blog.html" class="nav-link">Alerts</a>
+      </div>
+      <div class="hamburger" tabindex="0" aria-label="Open menu" role="button">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Stay Safe in the Digital World</h1>
+      <p>Protect yourself from online threats with Campus Cyber Shield. Learn, Report, and Stay Secure.</p>
+      <div class="hero-buttons">
+        <a href="resources.html" class="btn btn-primary">Learn Cyber Safety</a>
+        <a href="report-incident.html" class="btn btn-secondary">Report a Threat</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alerts-section">
+    <div class="container">
+      <h2>🚨 Current Threat Alerts</h2>
+      <div class="alerts-grid" id="threatAlerts"></div>
+    </div>
+  </section>
+
+  <section class="resources-section">
+    <div class="container">
+      <h2>📚 Essential Guides</h2>
+      <div class="resources-grid">
+        <div class="resource-card">
+          <h3>🔐 Password Security</h3>
+          <p>Create strong passwords and protect your accounts</p>
+          <a href="resources.html#passwords" class="btn-link">Learn More →</a>
+        </div>
+        <div class="resource-card">
+          <h3>🎣 Phishing Awareness</h3>
+          <p>Spot fake emails and messages before it's too late</p>
+          <a href="resources.html#phishing" class="btn-link">Learn More →</a>
+        </div>
+        <div class="resource-card">
+          <h3>📱 Social Media Safety</h3>
+          <p>Protect your digital footprint and privacy</p>
+          <a href="resources.html#social-media" class="btn-link">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cyber Quiz CTA -->
+  <section class="quiz-cta">
+    <div class="container">
+      <div class="quiz-content">
+        <h2>Test Your Cyber Knowledge</h2>
+        <p>Take our 2-minute quiz to see how cyber-smart you are!</p>
+        <button class="btn btn-primary" onclick="showQuizModal()" aria-haspopup="dialog" aria-controls="quizModal">Start Quiz</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Modal -->
+  <div id="quizModal" class="quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quizTitle" style="display:none;">
+    <div class="quiz-content" id="quizContent">
+      <!-- Quiz questions will be rendered here by quiz.js -->
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Campus Cyber Shield. Protecting students in the digital space.</p>
+      <div class="social-links">
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+        <a href="#">WhatsApp Channel</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="core.js"></script>
+  <script src="quiz.js"></script>
+  <script src="forms.js"></script>
+</body>
+</html>
