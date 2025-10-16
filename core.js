@@ -101,11 +101,5 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 });
-// Close menu if user clicks outside
-document.addEventListener("click", (e) => {
-  if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-    navMenu.classList.remove("active");
-    hamburger.classList.remove("open");
-  }
-});
+
 
