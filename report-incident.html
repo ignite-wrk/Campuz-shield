@@ -28,37 +28,52 @@
       <p>Help us protect the campus community by reporting suspicious activities</p>
 
       <div class="report-form">
-        <form id="incidentForm" aria-label="Report a security incident">
-          <div class="form-feedback" aria-live="polite"></div>
-          <div class="form-group">
-            <label for="incidentType">Type of Incident *</label>
-            <select id="incidentType" required>
-              <option value="">Select an option</option>
-              <option value="phishing">Phishing Email/SMS</option>
-              <option value="scam">Online Scam</option>
-              <option value="social-media">Social Media Impersonation</option>
-              <option value="harassment">Cyberbullying/Harassment</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="incidentDate">When did this happen?</label>
-            <input type="date" id="incidentDate">
-          </div>
-          <div class="form-group">
-            <label for="description">What happened? *</label>
-            <textarea id="description" placeholder="Please describe the incident in detail..." required></textarea>
-          </div>
-          <div class="form-group">
-            <label for="contact">Contact Information (Optional)</label>
-            <input type="email" id="contact" placeholder="email@example.com">
-            <small>We'll only contact you if we need more information</small>
-          </div>
-          <div class="privacy-note">
-            <strong>🔒 Privacy Note:</strong> Your report is anonymous. We will not share your personal information without your consent.
-          </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Report</button>
-        </form>
+        <form
+  id="incidentForm"
+  aria-label="Report a security incident"
+  action="https://formspree.io/f/xwpryvkr"
+  method="POST"
+>
+  <div class="form-feedback" aria-live="polite"></div>
+
+  <div class="form-group">
+    <label for="incidentType">Type of Incident *</label>
+    <select id="incidentType" name="incidentType" required>
+      <option value="">Select an option</option>
+      <option value="phishing">Phishing Email/SMS</option>
+      <option value="scam">Online Scam</option>
+      <option value="social-media">Social Media Impersonation</option>
+      <option value="harassment">Cyberbullying/Harassment</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="incidentDate">When did this happen?</label>
+    <input type="date" id="incidentDate" name="incidentDate">
+  </div>
+
+  <div class="form-group">
+    <label for="description">What happened? *</label>
+    <textarea id="description" name="description" placeholder="Please describe the incident in detail..." required></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="contact">Contact Information (Optional)</label>
+    <input type="email" id="contact" name="email" placeholder="email@example.com">
+    <small>We'll only contact you if we need more information</small>
+  </div>
+
+  <div class="privacy-note">
+    <strong>🔒 Privacy Note:</strong> Your report is anonymous. We will not share your personal information without your consent.
+  </div>
+
+  <input type="hidden" name="_subject" value="New Incident Report - Campus Cyber Shield">
+  <input type="hidden" name="_template" value="table">
+
+  <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Report</button>
+</form>
+
       </div>
     </div>
   </main>
@@ -73,4 +88,5 @@
   <script src="quiz.js"></script>
   <script src="forms.js"></script>
 </body>
+
 </html>
