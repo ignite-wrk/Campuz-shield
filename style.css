@@ -25,7 +25,7 @@ main {
   padding: 0 20px;
 }
 
-/* 🧭 Navbar Section (Optimized for all devices) */
+/* 🧭 Navigation */
 .navbar {
   background: #fff;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -42,24 +42,17 @@ main {
   padding: 1rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 1rem; /* Adds safe spacing between logo and menu */
-}
-
-.nav-logo {
-  flex-shrink: 0; /* Prevents logo from shrinking on small screens */
 }
 
 .nav-logo h2 {
   color: #2563eb;
   font-size: 1.5rem;
-  white-space: nowrap; /* Prevents text wrapping */
 }
 
-/* Navigation Links */
 .nav-menu {
-  transition: all 0.3s ease, max-height 0.4s ease;
-  overflow: hidden;
-  max-height: 0;
+  display: flex;
+  gap: 2rem;
+  transition: all 0.3s ease;
 }
 
 .nav-link {
@@ -80,9 +73,7 @@ main {
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
-  margin-left: 10px; /* Keeps it slightly apart from the logo */
 }
-
 .hamburger span {
   width: 25px;
   height: 3px;
@@ -133,23 +124,6 @@ main {
     display: flex;
   }
 }
-
-/* 📱 Extra small phones (<=500px) */
-@media (max-width: 500px) {
-  .nav-container {
-    padding: 0.8rem 1rem;
-  }
-
-  .nav-logo h2 {
-    font-size: 1.2rem;
-  }
-
-  .hamburger span {
-    width: 22px;
-    height: 2.5px;
-  }
-}
-
 
 /* Hero Section */
 .hero {
@@ -477,7 +451,4 @@ textarea { min-height: 100px; resize: vertical; }
     font-size: 1.15rem;
   }
 }
-
-
-
 
