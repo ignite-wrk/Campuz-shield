@@ -414,6 +414,29 @@ textarea { min-height: 100px; resize: vertical; }
 .btn-secondary:hover {
   background: #1d4ed8;
 }
+.doc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 500;
+  margin-top: 10px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.doc-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.external-link-icon {
+  vertical-align: middle;
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 700px) {
