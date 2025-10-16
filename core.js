@@ -1,8 +1,5 @@
 // core.js - Core app logic (threat alerts, nav, modal trap)
 
-/* ===============================
-   🔒 Threat Alerts Data & Loader
-================================*/
 const threatAlerts = [
   {
     title: "⚠️ Fake M-Pesa Messages",
@@ -36,54 +33,34 @@ function loadThreatAlerts() {
   `).join('');
 }
 
-/* ===============================
-   📱 Mobile Navbar Toggle
-================================*/
-document.addEventListener("DOMContentLoaded", function () {
-  const hamburger = document.querySelector(".hamburger");
-  const navMenu = document.querySelector(".nav-menu");
-
-  // Toggle Menu Open/Close
+function setupMobileMenu() {
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
   if (hamburger && navMenu) {
-    hamburger.addEventListener("click", () => {
-      navMenu.classList.toggle("active");
-      hamburger.classList.toggle("open");
-    });
-
-    // Close menu when a nav link is clicked
-    document.querySelectorAll(".nav-link").forEach(link =>
-      link.addEventListener("click", () => {
-        navMenu.classList.remove("active");
-        hamburger.classList.remove("open");
-      })
-    );
-
-    // Optional: Close menu when clicking outside
-    document.addEventListener("click", (e) => {
-      if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-        navMenu.classList.remove("active");
-        hamburger.classList.remove("open");
-      }
+    hamburger.addEventListener('click', function() {
+      navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+      hamburger.classList.toggle('active');
     });
   }
-});
+}
 
-/* ===============================
-   ♿ Accessibility: Trap Focus in Modals
-================================*/
+// Accessibility: trap focus in modals
 function trapFocus(modal) {
   const focusableEls = modal.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
   const firstEl = focusableEls[0];
   const lastEl = focusableEls[focusableEls.length - 1];
-
   modal.addEventListener('keydown', function (e) {
     if (e.key === 'Tab') {
-      if (e.shiftKey && document.activeElement === firstEl) {
-        e.preventDefault();
-        lastEl.focus();
-      } else if (!e.shiftKey && document.activeElement === lastEl) {
-        e.preventDefault();
-        firstEl.focus();
+      if (e.shiftKey) {
+        if (document.activeElement === firstEl) {
+          e.preventDefault();
+          lastEl.focus();
+        }
+      } else {
+        if (document.activeElement === lastEl) {
+          e.preventDefault();
+          firstEl.focus();
+        }
       }
     } else if (e.key === 'Escape') {
       modal.style.display = 'none';
@@ -91,17 +68,36 @@ function trapFocus(modal) {
   });
 }
 
-/* ===============================
-   🚀 Initialize Page
-================================*/
 document.addEventListener('DOMContentLoaded', function() {
   loadThreatAlerts();
-
+  setupMobileMenu();
+  // Trap focus for quiz modal (if present)
   const quizModal = document.getElementById('quizModal');
   if (quizModal) {
     trapFocus(quizModal);
     quizModal.addEventListener('click', function (e) {
       if (e.target === quizModal) quizModal.style.display = 'none';
     });
+  }
+});
+// Mobile Navbar Toggle Script
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".nav-menu");
+
+  if (hamburger && navMenu) {
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      // Animate hamburger lines
+      hamburger.classList.toggle("open");
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll(".nav-link").forEach(link =>
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        hamburger.classList.remove("open");
+      })
+    );
   }
 });
