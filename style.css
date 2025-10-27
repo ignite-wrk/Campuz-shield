@@ -16,13 +16,15 @@ html, body {
 }
 
 main {
-  flex: 1; /* Pushes footer to bottom */
+  flex: 1;
+  margin-top: 100px; /* Ensure space below navbar */
+  padding-top: 2rem;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
 /* 🧭 Navigation */
@@ -33,6 +35,7 @@ main {
   width: 100%;
   top: 0;
   z-index: 1000;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .nav-container {
@@ -99,14 +102,12 @@ main {
 /* 📱 Responsive Navbar */
 @media (max-width: 900px) {
   .nav-container {
-    padding: 0.8rem 1rem; /* less padding to fit logo + hamburger */
+    padding: 0.8rem 1rem;
   }
-
   .nav-logo h2 {
-    font-size: 1.25rem; /* smaller logo font */
-    white-space: nowrap; /* prevent line break */
+    font-size: 1.25rem;
+    white-space: nowrap;
   }
-
   .nav-menu {
     position: absolute;
     top: 70px;
@@ -121,29 +122,23 @@ main {
     transform: translateY(-10px);
     gap: 0;
   }
-
   .nav-menu.active {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
   }
-
   .nav-menu .nav-link {
     padding: 1rem 1.5rem;
     border-bottom: 1px solid #f3f4f6;
   }
-
   .hamburger {
     display: flex;
     gap: 4px;
   }
-
-  /* Reduce any leftover spacing */
   .nav-logo, .hamburger {
     margin: 0;
   }
 }
-
 
 /* Hero Section */
 .hero {
@@ -211,38 +206,38 @@ main {
 }
 
 /* 🧱 Sections */
-section {
-  padding: 80px 0;
+section, .about-team, .alerts-section, .resources-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  margin: 0;
 }
 @media (max-width: 700px) {
-  section {
-    padding: 50px 0;
+  section, .about-team, .alerts-section, .resources-section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  main, .main-content {
+    margin-top: 70px;
+    padding-top: 1rem;
   }
 }
 
-/* Alerts and Cards */
-.alerts-section,
-.resources-section {
-  background: #f8f9fa;
-   background: #f8f9fa;
-  padding: 3rem 2rem;        /* Adds consistent spacing inside the section */
-  margin: 0; 
-  margin-top: -3rem;
-}
-.alerts-grid, .resources-grid, .blog-posts {
+/* Grid and Card Spacing */
+.alerts-grid, .resources-grid, .blog-posts, .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 2rem;
+  margin-top: 2.5rem;
 }
-.alert-card, .resource-card, .guide-card, .blog-card {
+.alert-card, .resource-card, .guide-card, .blog-card, .team-member {
   background: white;
-  padding: 2rem;
+  padding: 2rem 1.7rem 2rem 1.7rem;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.08);
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   border-left: 4px solid #2563eb;
 }
+
 .alert-card { border-left-color: #ef4444; }
 .resource-card { border-left-color: #10b981; }
 .alert-card h3, .resource-card h3, .guide-card h3, .blog-card h2 {
@@ -255,9 +250,20 @@ section {
   display: block;
 }
 
+@media (max-width: 700px) {
+  .alert-card, .resource-card, .guide-card, .blog-card, .team-member {
+    padding: 1.2rem;
+  }
+  .quiz-modal .quiz-content {
+    margin: 50px auto 0 auto;
+    padding: 1rem;
+  }
+  .alerts-grid, .resources-grid, .blog-posts, .team-grid {
+    gap: 1.2rem;
+  }
+}
 
-
-/* Quiz Modal */
+/* 🧩 Quiz Modal */
 .quiz-modal {
   display: none;
   position: fixed;
@@ -267,17 +273,18 @@ section {
   background: rgba(31,41,55,0.8);
   z-index: 2000;
 }
+
 .quiz-modal .quiz-content {
   background: white;
   color: #222;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
   border-radius: 12px;
   max-width: 400px;
-  margin: 120px auto 0 auto;
-  margin-top: -3rem;
+  margin: 100px auto 0 auto;
   position: relative;
   box-shadow: 0 8px 32px rgba(0,0,0,0.18);
 }
+
 .quiz-modal button {
   margin-top: 1rem;
   width: 100%;
@@ -343,7 +350,7 @@ textarea { min-height: 100px; resize: vertical; }
   color: white;
   text-align: center;
   padding: 2rem 0;
-  margin-top: 3rem;
+  margin-top: 4rem;
 }
 .footer .social-links {
   margin-top: 1rem;
@@ -360,15 +367,7 @@ textarea { min-height: 100px; resize: vertical; }
   outline: none;
 }
 
-/* Responsive adjustments */
-@media (max-width: 700px) {
-  .alert-card, .resource-card, .guide-card, .report-form, .quiz-modal .quiz-content {
-    padding: 1.2rem;
-  }
-  .quiz-modal .quiz-content {
-    margin: 50px auto 0 auto;
-  }
-}
+/* Blog Section Spacing */
 .blog-posts {
   display: grid;
   gap: 2.5rem;
@@ -457,8 +456,6 @@ textarea { min-height: 100px; resize: vertical; }
   vertical-align: middle;
 }
 
-
-/* Responsive adjustments */
 @media (max-width: 700px) {
   .blog-card {
     padding: 1.5rem;
@@ -472,4 +469,145 @@ textarea { min-height: 100px; resize: vertical; }
   }
 }
 
+/* 🌟 Team Section */
+.about-team {
+  background: #f8f9fa;
+  padding: 4rem 2rem;
+  margin-top: -3rem;
+}
 
+.about-team .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-team h2 {
+  font-size: 2rem;
+  color: #2563eb;
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.about-team h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #10b981;
+  margin: 0.5rem auto 1.5rem;
+  border-radius: 2px;
+}
+
+.team-intro {
+  font-size: 1.05rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  align-items: start;
+}
+
+.team-member {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.team-member:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.team-member img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 4px solid #2563eb;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.team-member:hover img {
+  border-color: #10b981;
+  transform: scale(1.05);
+}
+
+.team-member h4 {
+  font-size: 1.15rem;
+  color: #1f2937;
+  margin-bottom: 0.3rem;
+}
+
+.role {
+  color: #2563eb;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+
+.bio {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+.team-member .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.team-member .social-links a {
+  color: #2563eb;
+  background: #e0e7ff;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.team-member .social-links a:hover {
+  background: #2563eb;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 700px) {
+  .about-team {
+    padding: 3rem 1rem;
+  }
+  .team-member {
+    padding: 1.5rem;
+  }
+  .team-member img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Headings & Paragraphs */
+h1, h2, h3, h4 {
+  margin-bottom: 1rem;
+}
+
+p, ul, .blog-meta, .alert-date, .bio {
+  margin-bottom: 1.2rem;
+}
