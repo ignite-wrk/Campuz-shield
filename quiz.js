@@ -38,7 +38,7 @@ function renderQuizQuestion() {
           onclick="window.open('https://infosecquiz.com/fundamentals-of-information-security-quiz/', '_blank')">
           More Quizzes
         </button>
-        <button id="moreQuizBtn2" class="btn btn-info" aria-label="Try Another Quiz"
+        <button id="moreQuizBtn2" class="btn btn-secondary" aria-label="Try Another Quiz"
           onclick="window.open('https://cyberquiz.com/new-quiz', '_blank')">
           Try Another Quiz
         </button>
