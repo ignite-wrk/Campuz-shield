@@ -151,6 +151,10 @@ function renderQuizQuestion() {
     container.innerHTML = `
       <h2>Your Score: ${quizState.score} / ${quizQuestions.length}</h2>
       <button id="quizRestartBtn" class="btn btn-primary" aria-label="Restart Quiz">Restart Quiz</button>
+    <button id="moreQuizBtn" class="btn btn-secondary" aria-label="More Quizzes"
+  onclick="window.open('https://infosecquiz.com/fundamentals-of-information-security-quiz/', '_blank')">
+  More Quizzes
+</button>
       <button id="quizCloseBtn2" class="btn btn-secondary" aria-label="Close Quiz">Close</button>
     `;
     document.getElementById('quizRestartBtn').onclick = () => {
