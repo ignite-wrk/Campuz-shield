@@ -135,7 +135,7 @@ function showQuizModal() {
   quizState.current = 0;
   quizState.score = 0;
   renderQuizQuestion();
-  document.getElementById('quizCloseBtn').focus();
+  document.getElementById('quizCloseBtn')?.focus();
 }
 
 function closeQuizModal() {
@@ -147,15 +147,18 @@ function renderQuizQuestion() {
   const container = document.getElementById('quizContent');
   if (!container) return;
 
+  // === Final score screen ===
   if (quizState.current >= quizQuestions.length) {
     container.innerHTML = `
       <h2>Your Score: ${quizState.score} / ${quizQuestions.length}</h2>
-      <button id="quizRestartBtn" class="btn btn-primary" aria-label="Restart Quiz">Restart Quiz</button>
-    <button id="moreQuizBtn" class="btn btn-secondary" aria-label="More Quizzes"
-  onclick="window.open('https://infosecquiz.com/fundamentals-of-information-security-quiz/', '_blank')">
-  More Quizzes
-</button>
-      <button id="quizCloseBtn2" class="btn btn-secondary" aria-label="Close Quiz">Close</button>
+      <div class="quiz-buttons">
+        <button id="quizRestartBtn" class="btn btn-primary" aria-label="Restart Quiz">Restart Quiz</button>
+        <button id="moreQuizBtn" class="btn btn-success" aria-label="More Quizzes"
+          onclick="window.open('https://infosecquiz.com/fundamentals-of-information-security-quiz/', '_blank')">
+          More Quizzes
+        </button>
+        <button id="quizCloseBtn2" class="btn btn-secondary" aria-label="Close Quiz">Close</button>
+      </div>
     `;
     document.getElementById('quizRestartBtn').onclick = () => {
       quizState.current = 0;
@@ -166,6 +169,7 @@ function renderQuizQuestion() {
     return;
   }
 
+  // === Question screen ===
   const q = quizQuestions[quizState.current];
   container.innerHTML = `
     <h2>Question ${quizState.current + 1} of ${quizQuestions.length}</h2>
@@ -181,11 +185,17 @@ function renderQuizQuestion() {
         .join('')}
     </div>
     <div id="quizFeedback" aria-live="polite"></div>
-    <button id="quizCloseBtn" class="btn btn-secondary" style="margin-top:1rem;" aria-label="Close Quiz">Close</button>
+    <div class="quiz-buttons" style="margin-top:1rem;">
+      <button id="moreQuizBtn" class="btn btn-success" aria-label="More Quizzes"
+        onclick="window.open('https://infosecquiz.com/fundamentals-of-information-security-quiz/', '_blank')">
+        More Quizzes
+      </button>
+      <button id="quizCloseBtn" class="btn btn-secondary" aria-label="Close Quiz">Close</button>
+    </div>
   `;
 
   document.querySelectorAll('.quiz-opt').forEach(btn => {
-    btn.onclick = e => {
+    btn.onclick = () => {
       const selected = parseInt(btn.getAttribute('data-index'));
       const feedback = document.getElementById('quizFeedback');
       if (selected === q.correct) {
