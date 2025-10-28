@@ -153,9 +153,13 @@ function renderQuizQuestion() {
       <h2>Your Score: ${quizState.score} / ${quizQuestions.length}</h2>
       <div class="quiz-buttons">
         <button id="quizRestartBtn" class="btn btn-primary" aria-label="Restart Quiz">Restart Quiz</button>
-        <button id="moreQuizBtn" class="btn btn-success" aria-label="More Quizzes"
+        <button id="moreQuizBtn1" class="btn btn-success" aria-label="More Quizzes"
           onclick="window.open('https://infosecquiz.com/fundamentals-of-information-security-quiz/', '_blank')">
           More Quizzes
+        </button>
+        <button id="moreQuizBtn2" class="btn btn-info" aria-label="Try Another Quiz"
+          onclick="window.open('https://cyberquiz.com/new-quiz', '_blank')">
+          Try Another Quiz
         </button>
         <button id="quizCloseBtn2" class="btn btn-secondary" aria-label="Close Quiz">Close</button>
       </div>
@@ -186,9 +190,13 @@ function renderQuizQuestion() {
     </div>
     <div id="quizFeedback" aria-live="polite"></div>
     <div class="quiz-buttons" style="margin-top:1rem;">
-      <button id="moreQuizBtn" class="btn btn-success" aria-label="More Quizzes"
+      <button id="moreQuizBtn1" class="btn btn-success" aria-label="More Quizzes"
         onclick="window.open('https://infosecquiz.com/fundamentals-of-information-security-quiz/', '_blank')">
         More Quizzes
+      </button>
+      <button id="moreQuizBtn2" class="btn btn-info" aria-label="Try Another Quiz"
+        onclick="window.open('https://cyberquiz.com/new-quiz', '_blank')">
+        Try Another Quiz
       </button>
       <button id="quizCloseBtn" class="btn btn-secondary" aria-label="Close Quiz">Close</button>
     </div>
