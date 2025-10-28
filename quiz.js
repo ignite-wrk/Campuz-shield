@@ -1,57 +1,7 @@
 // quiz.js - Modular Cyber Quiz functionality
 
 const quizQuestions = [
-  {
-    question: "You receive an SMS from 'M-Pesa' saying you've won 50,000 KSH. What should you do?",
-    options: [
-      "Reply immediately to claim your prize",
-      "Call the number provided to verify",
-      "Ignore it and don't respond",
-      "Forward it to friends"
-    ],
-    correct: 2
-  },
-  {
-    question: "What makes a strong password?",
-    options: [
-      "Your name and birth year",
-      "Simple words like 'password123'",
-      "A mix of letters, numbers, and symbols",
-      "Same password for all accounts"
-    ],
-    correct: 2
-  },
-  {
-    question: "What is network security as used in cybersecurity?",
-    options: [
-      "Safeguarding networks from intrusion",
-      "Securing softwares and apps",
-      "Protecting data stored and transmitted online",
-      "Detecting and responding to cyber attacks"
-    ],
-    correct: 0
-  },
-  {
-    question: "What is a threat actor?",
-    options: [
-      "Individual or group that engages in malicious activities such as hackers and cybercriminals.",
-      "None of the above.",
-      "Weakness in a system that can be exploited by attackers.",
-      "Method or pathway used to compromise a network or system."
-    ],
-    correct: 0
-  },
-  {
-    question: "What is threat intelligence?",
-    options: [
-      "Process of gathering and analysing data to anticipate and prevent cyber threats.",
-      "Method or pathway used by attackers to compromise a network or system.",
-      "Detecting and responding to cyber attacks.",
-      "Weakness in a system that can be exploited by attackers."
-    ],
-    correct: 0
-  },
-  {
+   {
     question: "What is forensic analysis as used in cybersecurity?",
     options: [
       "Process of investigating cyber incidents, collecting evidence of attack and analysis.",
